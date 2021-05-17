@@ -38,7 +38,8 @@ Saya asumsikan Anda telah menginstall lampp stack, xampp, atau local development
   <li>Letakkan di folder htdocs</li>
   <li>Buat database baru di phpmyadmin atau database manager lainnya dengan nama futsal</li>
   <li>Import database yang ada di dalam folder db</li>
-  <li>akses ke http://localhost/futsal</li>
+  <li>Buka terminal ke direktori project dan jalankan perintah composer update</li>
+  <li>Akses ke http://localhost/futsal</li>
 </ol>
 
 <h2>Cara Login</h2>
