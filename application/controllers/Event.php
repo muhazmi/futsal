@@ -54,7 +54,7 @@ class Event extends CI_Controller {
     /* melakukan pengecekan data, apabila ada maka akan ditampilkan */
 		if ($row)
     {
-			$this->data['page'] 				= 'Kategori: '.$row->nama_kategori.' - '.$this->data['company_data']->company_name;
+			$this->data['title'] 				= 'Kategori: '.$row->nama_kategori.' - '.$this->data['company_data']->company_name;
 
 			/* memanggil library pagination (membuat halaman) */
 	    $this->load->library('pagination');
