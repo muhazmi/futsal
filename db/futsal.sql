@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.5deb2
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: May 17, 2021 at 08:28 PM
--- Server version: 8.0.25-0ubuntu0.20.04.1
--- PHP Version: 7.4.3
+-- Host: 127.0.0.1
+-- Generation Time: May 20, 2021 at 04:33 PM
+-- Server version: 10.4.17-MariaDB
+-- PHP Version: 7.4.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -29,14 +28,14 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `album` (
-  `id_album` int NOT NULL,
+  `id_album` int(11) NOT NULL,
   `nama_album` char(50) NOT NULL,
   `slug_album` char(50) NOT NULL,
   `foto` text NOT NULL,
   `created_by` char(20) NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `modified_by` char(20) DEFAULT NULL,
-  `modified_at` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
+  `modified_at` datetime DEFAULT NULL ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -59,7 +58,7 @@ INSERT INTO `album` (`id_album`, `nama_album`, `slug_album`, `foto`, `created_by
 --
 
 CREATE TABLE `bank` (
-  `id_bank` int NOT NULL,
+  `id_bank` int(11) NOT NULL,
   `nama_bank` varchar(100) NOT NULL,
   `atas_nama` varchar(100) NOT NULL,
   `norek` varchar(100) NOT NULL,
@@ -83,7 +82,7 @@ INSERT INTO `bank` (`id_bank`, `nama_bank`, `atas_nama`, `norek`, `logo`) VALUES
 --
 
 CREATE TABLE `company` (
-  `id_company` int NOT NULL,
+  `id_company` int(11) NOT NULL,
   `company_name` varchar(100) NOT NULL,
   `company_desc` text NOT NULL,
   `company_address` text NOT NULL,
@@ -94,7 +93,7 @@ CREATE TABLE `company` (
   `company_email` char(30) NOT NULL,
   `foto` text NOT NULL,
   `foto_type` char(10) NOT NULL,
-  `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `created` datetime NOT NULL DEFAULT current_timestamp(),
   `modified` datetime DEFAULT NULL,
   `created_by` char(50) NOT NULL,
   `modified_by` char(50) NOT NULL
@@ -114,8 +113,8 @@ INSERT INTO `company` (`id_company`, `company_name`, `company_desc`, `company_ad
 --
 
 CREATE TABLE `diskon` (
-  `id` int NOT NULL,
-  `harga` int NOT NULL
+  `id` int(11) NOT NULL,
+  `harga` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -132,16 +131,16 @@ INSERT INTO `diskon` (`id`, `harga`) VALUES
 --
 
 CREATE TABLE `event` (
-  `id_event` int NOT NULL,
+  `id_event` int(11) NOT NULL,
   `nama_event` varchar(100) NOT NULL,
   `slug_event` varchar(100) DEFAULT NULL,
-  `deskripsi` text,
-  `kategori` int DEFAULT NULL,
-  `foto` text,
+  `deskripsi` text DEFAULT NULL,
+  `kategori` int(11) DEFAULT NULL,
+  `foto` text DEFAULT NULL,
   `foto_type` char(10) DEFAULT NULL,
-  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `created_by` char(50) NOT NULL,
-  `modified_at` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `modified_at` datetime DEFAULT NULL ON UPDATE current_timestamp(),
   `modified_by` char(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -164,15 +163,15 @@ INSERT INTO `event` (`id_event`, `nama_event`, `slug_event`, `deskripsi`, `kateg
 --
 
 CREATE TABLE `foto` (
-  `id_foto` int NOT NULL,
-  `album_id` int NOT NULL,
+  `id_foto` int(11) NOT NULL,
+  `album_id` int(11) NOT NULL,
   `nama_foto` char(100) NOT NULL,
   `slug_foto` char(100) NOT NULL,
   `foto` text NOT NULL,
   `created_by` char(20) NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `modified_by` char(20) NOT NULL,
-  `modified_at` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
+  `modified_at` datetime DEFAULT NULL ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -197,9 +196,9 @@ INSERT INTO `foto` (`id_foto`, `album_id`, `nama_foto`, `slug_foto`, `foto`, `cr
 --
 
 CREATE TABLE `jam` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `jam` varchar(50) NOT NULL,
-  `is_available` tinyint NOT NULL DEFAULT '1'
+  `is_available` tinyint(4) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -234,13 +233,13 @@ INSERT INTO `jam` (`id`, `jam`, `is_available`) VALUES
 --
 
 CREATE TABLE `kategori` (
-  `id_kategori` int NOT NULL,
+  `id_kategori` int(11) NOT NULL,
   `nama_kategori` varchar(20) NOT NULL,
   `slug_kat` varchar(20) NOT NULL,
   `created_by` char(50) NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `modified_by` char(50) NOT NULL,
-  `modified_at` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
+  `modified_at` datetime DEFAULT NULL ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -258,13 +257,13 @@ INSERT INTO `kategori` (`id_kategori`, `nama_kategori`, `slug_kat`, `created_by`
 --
 
 CREATE TABLE `kontak` (
-  `id_kontak` int NOT NULL,
+  `id_kontak` int(11) NOT NULL,
   `nama_kontak` char(50) NOT NULL,
   `nohp` char(50) NOT NULL,
   `created_by` char(50) NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `modified_by` char(50) NOT NULL,
-  `modified_at` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
+  `modified_at` datetime DEFAULT NULL ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -283,8 +282,8 @@ INSERT INTO `kontak` (`id_kontak`, `nama_kontak`, `nohp`, `created_by`, `created
 --
 
 CREATE TABLE `kota` (
-  `id_kota` int NOT NULL,
-  `provinsi_id` int NOT NULL,
+  `id_kota` int(11) NOT NULL,
+  `provinsi_id` int(11) NOT NULL,
   `nama_kota` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -802,14 +801,14 @@ INSERT INTO `kota` (`id_kota`, `provinsi_id`, `nama_kota`) VALUES
 --
 
 CREATE TABLE `lapangan` (
-  `id_lapangan` int NOT NULL,
+  `id_lapangan` int(11) NOT NULL,
   `nama_lapangan` varchar(100) NOT NULL,
-  `harga` int NOT NULL,
+  `harga` int(11) NOT NULL,
   `foto` text NOT NULL,
   `created_by` varchar(50) NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `modified_by` varchar(50) NOT NULL,
-  `modified_at` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
+  `modified_at` datetime DEFAULT NULL ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -831,10 +830,10 @@ INSERT INTO `lapangan` (`id_lapangan`, `nama_lapangan`, `harga`, `foto`, `create
 --
 
 CREATE TABLE `login_attempts` (
-  `id` int UNSIGNED NOT NULL,
+  `id` int(10) UNSIGNED NOT NULL,
   `ip_address` varchar(15) CHARACTER SET utf8 NOT NULL,
   `login` varchar(100) CHARACTER SET utf8 NOT NULL,
-  `time` int UNSIGNED DEFAULT NULL
+  `time` int(10) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -844,7 +843,7 @@ CREATE TABLE `login_attempts` (
 --
 
 CREATE TABLE `page` (
-  `id_page` int NOT NULL,
+  `id_page` int(11) NOT NULL,
   `judul_page` varchar(50) NOT NULL,
   `judul_seo` varchar(50) NOT NULL,
   `isi_page` text NOT NULL,
@@ -869,7 +868,7 @@ INSERT INTO `page` (`id_page`, `judul_page`, `judul_seo`, `isi_page`, `gambar`) 
 --
 
 CREATE TABLE `provinsi` (
-  `id_provinsi` int NOT NULL,
+  `id_provinsi` int(11) NOT NULL,
   `nama_provinsi` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -920,16 +919,16 @@ INSERT INTO `provinsi` (`id_provinsi`, `nama_provinsi`) VALUES
 --
 
 CREATE TABLE `slider` (
-  `id_slider` int NOT NULL,
-  `no_urut` int NOT NULL,
+  `id_slider` int(11) NOT NULL,
+  `no_urut` int(11) NOT NULL,
   `nama_slider` varchar(100) NOT NULL,
   `link` varchar(100) NOT NULL,
   `foto` text NOT NULL,
   `foto_type` char(10) NOT NULL,
-  `foto_size` int NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `foto_size` int(11) NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `created_by` char(50) NOT NULL,
-  `modified_at` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `modified_at` datetime DEFAULT NULL ON UPDATE current_timestamp(),
   `modified_by` char(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -949,10 +948,10 @@ INSERT INTO `slider` (`id_slider`, `no_urut`, `nama_slider`, `link`, `foto`, `fo
 --
 
 CREATE TABLE `subscriber` (
-  `id_subscriber` int NOT NULL,
+  `id_subscriber` int(11) NOT NULL,
   `email` char(20) NOT NULL,
-  `status` int NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `status` int(11) NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -962,15 +961,15 @@ CREATE TABLE `subscriber` (
 --
 
 CREATE TABLE `transaksi` (
-  `id_trans` int NOT NULL,
+  `id_trans` int(11) NOT NULL,
   `id_invoice` char(15) NOT NULL,
-  `user_id` int NOT NULL,
-  `subtotal` int NOT NULL,
-  `diskon` int NOT NULL,
-  `grand_total` int NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `subtotal` int(11) NOT NULL,
+  `diskon` int(11) NOT NULL,
+  `grand_total` int(11) NOT NULL,
   `deadline` datetime NOT NULL,
   `catatan` text NOT NULL,
-  `status` int NOT NULL,
+  `status` int(11) NOT NULL,
   `created_date` date NOT NULL,
   `created_time` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -996,16 +995,16 @@ INSERT INTO `transaksi` (`id_trans`, `id_invoice`, `user_id`, `subtotal`, `disko
 --
 
 CREATE TABLE `transaksi_detail` (
-  `id_transdet` int NOT NULL,
-  `trans_id` int NOT NULL,
-  `lapangan_id` int NOT NULL,
+  `id_transdet` int(11) NOT NULL,
+  `trans_id` int(11) NOT NULL,
+  `lapangan_id` int(11) NOT NULL,
   `tanggal` date NOT NULL,
   `jam_mulai` time DEFAULT NULL,
-  `durasi` int NOT NULL,
+  `durasi` int(11) NOT NULL,
   `jam_selesai` time DEFAULT NULL,
-  `harga_jual` int NOT NULL,
-  `total` int NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `harga_jual` int(11) NOT NULL,
+  `total` int(11) NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -1032,28 +1031,28 @@ INSERT INTO `transaksi_detail` (`id_transdet`, `trans_id`, `lapangan_id`, `tangg
 --
 
 CREATE TABLE `users` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `name` varchar(50) CHARACTER SET utf8 NOT NULL,
   `username` varchar(100) CHARACTER SET utf8 NOT NULL,
   `password` varchar(255) CHARACTER SET utf8 NOT NULL,
   `email` varchar(100) CHARACTER SET utf8 NOT NULL,
   `phone` varchar(20) CHARACTER SET utf8 DEFAULT NULL,
-  `provinsi` int DEFAULT NULL,
-  `kota` int DEFAULT NULL,
+  `provinsi` int(11) DEFAULT NULL,
+  `kota` int(11) DEFAULT NULL,
   `address` text CHARACTER SET utf8 NOT NULL,
-  `usertype` int NOT NULL,
-  `active` tinyint UNSIGNED DEFAULT NULL,
-  `photo` text CHARACTER SET utf8,
+  `usertype` int(11) NOT NULL,
+  `active` tinyint(3) UNSIGNED DEFAULT NULL,
+  `photo` text CHARACTER SET utf8 DEFAULT NULL,
   `photo_type` varchar(10) CHARACTER SET utf8 DEFAULT NULL,
   `ip_address` varchar(45) CHARACTER SET utf8 NOT NULL,
   `salt` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `activation_code` varchar(40) CHARACTER SET utf8 DEFAULT NULL,
   `forgotten_password_code` varchar(40) CHARACTER SET utf8 DEFAULT NULL,
-  `forgotten_password_time` int UNSIGNED DEFAULT NULL,
+  `forgotten_password_time` int(10) UNSIGNED DEFAULT NULL,
   `remember_code` varchar(40) CHARACTER SET utf8 DEFAULT NULL,
-  `last_login` int DEFAULT NULL,
-  `created_on` int NOT NULL,
-  `modified` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
+  `last_login` int(11) DEFAULT NULL,
+  `created_on` int(11) NOT NULL,
+  `modified` datetime DEFAULT NULL ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -1073,7 +1072,7 @@ INSERT INTO `users` (`id`, `name`, `username`, `password`, `email`, `phone`, `pr
 --
 
 CREATE TABLE `users_group` (
-  `id_group` int NOT NULL,
+  `id_group` int(11) NOT NULL,
   `name_group` char(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -1135,6 +1134,12 @@ ALTER TABLE `jam`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `kategori`
+--
+ALTER TABLE `kategori`
+  ADD PRIMARY KEY (`id_kategori`);
+
+--
 -- Indexes for table `kontak`
 --
 ALTER TABLE `kontak`
@@ -1145,6 +1150,12 @@ ALTER TABLE `kontak`
 --
 ALTER TABLE `lapangan`
   ADD PRIMARY KEY (`id_lapangan`);
+
+--
+-- Indexes for table `login_attempts`
+--
+ALTER TABLE `login_attempts`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `page`
@@ -1199,91 +1210,103 @@ ALTER TABLE `users_group`
 -- AUTO_INCREMENT for table `album`
 --
 ALTER TABLE `album`
-  MODIFY `id_album` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_album` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `bank`
 --
 ALTER TABLE `bank`
-  MODIFY `id_bank` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_bank` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `company`
 --
 ALTER TABLE `company`
-  MODIFY `id_company` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_company` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `event`
 --
 ALTER TABLE `event`
-  MODIFY `id_event` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_event` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `foto`
 --
 ALTER TABLE `foto`
-  MODIFY `id_foto` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_foto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `jam`
 --
 ALTER TABLE `jam`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
+-- AUTO_INCREMENT for table `kategori`
+--
+ALTER TABLE `kategori`
+  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `kontak`
 --
 ALTER TABLE `kontak`
-  MODIFY `id_kontak` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_kontak` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `lapangan`
 --
 ALTER TABLE `lapangan`
-  MODIFY `id_lapangan` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_lapangan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `login_attempts`
+--
+ALTER TABLE `login_attempts`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `page`
 --
 ALTER TABLE `page`
-  MODIFY `id_page` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_page` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `slider`
 --
 ALTER TABLE `slider`
-  MODIFY `id_slider` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_slider` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `subscriber`
 --
 ALTER TABLE `subscriber`
-  MODIFY `id_subscriber` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id_subscriber` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id_trans` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_trans` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `transaksi_detail`
 --
 ALTER TABLE `transaksi_detail`
-  MODIFY `id_transdet` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_transdet` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `users_group`
 --
 ALTER TABLE `users_group`
-  MODIFY `id_group` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_group` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
