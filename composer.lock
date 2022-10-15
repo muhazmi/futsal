@@ -8,26 +8,25 @@
     "packages": [
         {
             "name": "spipu/html2pdf",
-            "version": "v5.2.2",
+            "version": "v5.2.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spipu/html2pdf.git",
-                "reference": "e6d8ca22347b6691bb8c2652212b1be2c89b3eff"
+                "reference": "c002749cf21733d53fb9e50d082ca3d1bde06c85"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spipu/html2pdf/zipball/e6d8ca22347b6691bb8c2652212b1be2c89b3eff",
-                "reference": "e6d8ca22347b6691bb8c2652212b1be2c89b3eff",
+                "url": "https://api.github.com/repos/spipu/html2pdf/zipball/c002749cf21733d53fb9e50d082ca3d1bde06c85",
+                "reference": "c002749cf21733d53fb9e50d082ca3d1bde06c85",
                 "shasum": ""
             },
             "require": {
                 "ext-gd": "*",
                 "ext-mbstring": "*",
-                "php": "^5.6 || ^7.0",
-                "tecnickcom/tcpdf": "^6.2"
+                "php": "^5.6 || ^7.0 || ^8.0",
+                "tecnickcom/tcpdf": "^6.3"
             },
             "require-dev": {
-                "phake/phake": "^2.0",
                 "phpunit/phpunit": "^5.0"
             },
             "suggest": {
@@ -58,24 +57,20 @@
                 "html2pdf",
                 "pdf"
             ],
-            "support": {
-                "issues": "https://github.com/spipu/html2pdf/issues",
-                "source": "https://github.com/spipu/html2pdf/tree/v5.2.2"
-            },
-            "time": "2020-03-22T16:23:26+00:00"
+            "time": "2022-04-03T22:05:23+00:00"
         },
         {
             "name": "tecnickcom/tcpdf",
-            "version": "6.4.1",
+            "version": "6.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tecnickcom/TCPDF.git",
-                "reference": "5ba838befdb37ef06a16d9f716f35eb03cb1b329"
+                "reference": "cc54c1503685e618b23922f53635f46e87653662"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tecnickcom/TCPDF/zipball/5ba838befdb37ef06a16d9f716f35eb03cb1b329",
-                "reference": "5ba838befdb37ef06a16d9f716f35eb03cb1b329",
+                "url": "https://api.github.com/repos/tecnickcom/TCPDF/zipball/cc54c1503685e618b23922f53635f46e87653662",
+                "reference": "cc54c1503685e618b23922f53635f46e87653662",
                 "shasum": ""
             },
             "require": {
@@ -124,17 +119,13 @@
                 "pdf417",
                 "qrcode"
             ],
-            "support": {
-                "issues": "https://github.com/tecnickcom/TCPDF/issues",
-                "source": "https://github.com/tecnickcom/TCPDF/tree/6.4.1"
-            },
             "funding": [
                 {
                     "url": "https://www.paypal.com/cgi-bin/webscr?cmd=_donations&currency_code=GBP&business=paypal@tecnick.com&item_name=donation%20for%20tcpdf%20project",
                     "type": "custom"
                 }
             ],
-            "time": "2021-03-27T16:00:33+00:00"
+            "time": "2022-08-12T07:50:54+00:00"
         }
     ],
     "packages-dev": [],
@@ -145,5 +136,5 @@
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "1.1.0"
 }
