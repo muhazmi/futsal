@@ -60,7 +60,7 @@ Saya asumsikan Anda telah menginstall lampp stack, xampp, atau local development
 
 <h2>Catatan</h2>
 <ol>
-  <li>Created by Muhammad Azmi - <a href="https://muhazmi.com">muhazmi.com</a> / AmperaKoding - <a href="https://amperakoding.com">amperakoding.com</a></li>
+  <li>Created by Muhammad Azmi - <a href="https://muhazmi.my.id">muhazmi.my.id</a> / AmperaKoding - <a href="https://amperakoding.com">amperakoding.com</a></li>
   <li>Sistem membership dilakukan secara manual dengan cara Customer menghubungi SuperAdmin. Kemudian SuperAdmin akan mengganti Tipe User Customer tersebut di backend panel sebagai SuperAdmin.</li>
 </ol>
 
