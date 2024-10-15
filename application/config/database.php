@@ -75,11 +75,11 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'amperakoding',
-	'password' => 'amperakoding',
-	'database' => 'futsal',
-	'dbdriver' => 'mysqli',
+	'hostname' => '', //wajib isi: localhost jika pakai databse lokal atau online (sqlite abaikan ini)
+	'username' => '', //wajib isi: username database jika pakai databse lokal atau online (sqlite abaikan ini)
+	'password' => '', //wajib isi: password database jika pakai databse lokal atau online (sqlite abaikan ini)
+	'database' => './db/db_futsal.db',
+	'dbdriver' => 'sqlite3', //gunakan mysqli jika ingin menggunakan mySQL, abaikan ini jika pakai sqlite
 	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),
